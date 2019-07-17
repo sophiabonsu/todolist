@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import TaskList from "./TaskList";
 
 
 class TodoList extends Component{
@@ -7,7 +8,8 @@ class TodoList extends Component{
    this.state ={
      todos:[],
      currentToDo:"",
-   };
+
+    };
      this.addItem = this.addItem.bind(this);
 
  }
@@ -31,25 +33,36 @@ class TodoList extends Component{
 
      })
    }
- };
+ }
 
 
+ deleteItem =(index,event) =>{
+   console.log(event.target.id)
+   const result =this.state.todo.filter((todo,index) => index !== event.target.id)
+ 
+   this.setState({
+     todo:result
+   });
+ 
+  }
 
 
 
 
 
   render(){
+    console.log("console logging arrays of todos", this.state.todos)
     return(
       <div className='container'>
         <form onSubmit={this.addItem}>
           <label htmlFor="taskName">Task Name:</label>
-          <input ref={(a) => this._inputElement= a}  onChange={this.handleChange} name="taskName"type="text"placeholder="Add to do here!"/>
+          <input  onChange={this.handleChange} name="taskName"type="text"placeholder="Add to do here!"/>
           <button type="submit">Add Task</button>
         </form>
-       {/* <TodoItems entries={this.state.items}
-                delete={this.deleteItem}/> */}
-      </div>
+        
+        <TaskList todoArray={this.state.todo} deleteItem={this.deleteItem}/>
+        
+       </div>
     );
   }
 }
