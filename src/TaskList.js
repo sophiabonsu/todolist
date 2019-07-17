@@ -7,9 +7,7 @@ const TaskList = (props) => {
             {props.todoArray.length ?
                 props.todoArray.map((todo, index) => {
                     return (<li key={index}>{todo}<button id={index} onClick={(event) => props.deleteItem(index, event)} type="text">Delete</button> </li>)
-                }) :
-
-                <li></li>
+                }) : <li></li>
             }
         </ul>
     )

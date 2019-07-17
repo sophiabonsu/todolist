@@ -38,10 +38,10 @@ class TodoList extends Component{
 
  deleteItem =(index,event) =>{
    console.log(event.target.id)
-   const result =this.state.todo.filter((todo,index) => index !== event.target.id)
+   const result =this.state.todos.filter((todo,index) => index !== event.target.id)
  
    this.setState({
-     todo:result
+     todos:result
    });
  
   }
@@ -60,7 +60,7 @@ class TodoList extends Component{
           <button type="submit">Add Task</button>
         </form>
         
-        <TaskList todoArray={this.state.todo} deleteItem={this.deleteItem}/>
+        <TaskList todoArray={this.state.todos} deleteItem={this.deleteItem}/>
         
        </div>
     );
